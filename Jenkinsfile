@@ -1,6 +1,7 @@
 //Building a declarative pipeline
 pipeline {
     agent any
+    //main three stages
     stages {
         stage('Build') {
             steps {
@@ -17,6 +18,7 @@ pipeline {
                 bat './mvnw package' 
             }
         }
+        //only run this stage if we are in the master branch
         stage('Deploy') {
             when {
                 branch 'master'
