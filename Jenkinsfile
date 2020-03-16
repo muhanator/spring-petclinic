@@ -28,4 +28,16 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            mail to: 'muhanator1997@gmail.com',
+                subject: "Successful Build! ${currentBuild.fullDisplayName}",
+                body: " ${env.BUILD_URL}"
+        }
+        failure {
+            mail to: 'muhanator1997@gmail.com',
+                subject: "Fail Build! ${currentBuild.fullDisplayName}",
+                body: " ${env.BUILD_URL}"
+        }
+    }
 }
